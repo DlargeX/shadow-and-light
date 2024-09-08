@@ -20,7 +20,7 @@ local sharedIndicatorOptions = {
 local ObjectiveTrackerDefaults = {
 	header = {
 		text = {
-			enable = true,
+			enable = false,
 			font = 'PT Sans Narrow',
 			fontSize = 20,
 			fontOutline = 'SHADOWOUTLINE',
@@ -29,7 +29,7 @@ local ObjectiveTrackerDefaults = {
 	},
 	headerText = {
 		text = {
-			enable = true,
+			enable = false,
 			font = 'PT Sans Narrow',
 			fontSize = 17,
 			fontOutline = 'SHADOWOUTLINE',
@@ -43,7 +43,7 @@ local ObjectiveTrackerDefaults = {
 	},
 	entryText = {
 		text = {
-			enable = true,
+			enable = false,
 			font = 'PT Sans Narrow',
 			fontSize = 15,
 			fontOutline = 'SHADOWOUTLINE',
@@ -53,7 +53,7 @@ local ObjectiveTrackerDefaults = {
 	},
 	progressBar = {
 		text = {
-			enable = true,
+			enable = false,
 			font = 'PT Sans Narrow',
 			fontSize = 16,
 			fontOutline = 'SHADOWOUTLINE',
@@ -644,43 +644,6 @@ P["sle"] = {
 			},
 		},
 	},
-	--Media
-	media = {
-		fonts = {
-			mail = {
-				font = 'PT Sans Narrow',
-				fontSize = 12,
-				fontOutline = 'NONE',
-			},
-			objective = {
-				font = 'PT Sans Narrow',
-				fontSize = 12,
-				fontOutline = 'OUTLINE',
-			},
-			objectiveHeader = {
-				font = 'PT Sans Narrow',
-				fontSize = 12,
-				fontOutline = 'NONE',
-			},
-			questFontSuperHuge = {
-				font = 'PT Sans Narrow',
-				fontSize = 24,
-				fontOutline = 'NONE',
-			},
-			scenarioStage = {
-				HeaderText = {
-					font = 'PT Sans Narrow',
-					fontSize = 16,
-					fontOutline = 'OUTLINE',
-				},
-				TimerText = {
-					font = 'PT Sans Narrow',
-					fontSize = 22,
-					fontOutline = 'OUTLINE',
-				},
-			},
-		},
-	},
 	--Minimap Module
 	["minimap"] = {
 		["combat"] = false,
@@ -718,6 +681,11 @@ P["sle"] = {
 		},
 		["locPanel"] = {
 			["enable"] = false,
+			coords = {
+				enable = true,
+				colorType = 'DEFAULT',
+				customColor = {r = 1, g = 1, b = 1 },
+			},
 			["autowidth"] = false,
 			["width"] = 200,
 			["height"] = 21,
@@ -730,9 +698,7 @@ P["sle"] = {
 			["format"] = "%.0f",
 			["zoneText"] = true,
 			["colorType"] = "REACTION",
-			["colorType_Coords"] = "DEFAULT",
 			["customColor"] = {r = 1, g = 1, b = 1 },
-			["customColor_Coords"] = {r = 1, g = 1, b = 1 },
 			["combathide"] = false,
 			["orderhallhide"] = false,
 			["portals"] = {

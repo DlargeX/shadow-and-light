@@ -155,6 +155,16 @@ function SLE:DatabaseConversions()
 						data.sle.minimap.locPanel.fontOutline = ''
 						profileChanged = true
 					end
+					if data.sle.minimap.locPanel.colorType_Coords then
+						E:CopyTable(E.db.sle.minimap.locPanel.coords.colorType, data.sle.minimap.locPanel.colorType_Coords)
+						data.sle.minimap.locPanel.colorType_Coords = nil
+						profileChanged = true
+					end
+					if data.sle.minimap.locPanel.customColor_Coords then
+						E:CopyTable(E.db.sle.minimap.locPanel.coords.customColor, data.sle.minimap.locPanel.customColor_Coords)
+						data.sle.minimap.locPanel.customColor_Coords = nil
+						profileChanged = true
+					end
 					if data.sle.minimap.portals then
 						if type(data.sle.minimap.locPanel.portals.hsPrio) == 'table' then
 							data.sle.minimap.locPanel.portals.hsPrio = P.sle.minimap.locPanel.portals.hsPrio
@@ -184,24 +194,6 @@ function SLE:DatabaseConversions()
 					end
 				end
 
-			end
-			if data.sle.media then
-				if data.sle.media.fonts then
-					for i = 1, #mediaFonts do
-						if data.sle.media.fonts[mediaFonts[i]] then
-							if data.sle.media.fonts[mediaFonts[i]].outline then
-								E.db.sle.media.fonts[mediaFonts[i]].fontOutline = data.sle.media.fonts[mediaFonts[i]].outline
-								data.sle.media.fonts[mediaFonts[i]].outline = nil
-								profileChanged = true
-							end
-							if data.sle.media.fonts[mediaFonts[i]].size then
-								E.db.sle.media.fonts[mediaFonts[i]].fontSize = data.sle.media.fonts[mediaFonts[i]].size
-								data.sle.media.fonts[mediaFonts[i]].size = nil
-								profileChanged = true
-							end
-						end
-					end
-				end
 			end
 			if data.sle.nameplates then
 				if data.sle.nameplates.threat then
