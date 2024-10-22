@@ -368,7 +368,7 @@ function Armory:ProcessEnchant(which, Slot, enchantText, enchantTextReal)
 	if E.db.sle.armory.enchantString.replacement then
 		local profQuality = strmatch(enchantTextReal, '|A.-|a')
 		for _, enchData in pairs(SLE_ArmoryDB.EnchantString) do
-			if strict and enchantText == enchData.original then
+			if enchData.new and strict and enchantText == enchData.original then
 				text = enchData.new..' '..(showReal and profQuality or '')
 			elseif not strict and enchData.original and enchData.new then
 				text = gsub(text, E:EscapeString(enchData.original), enchData.new)
@@ -506,6 +506,7 @@ function Armory:ToggleItemLevelInfo()
 		-- Armory:UnregisterEvent('AZERITE_ESSENCE_UPDATE')
 		Armory:UnregisterEvent('SOCKET_INFO_UPDATE')
 		Armory:UnregisterEvent('WEAPON_ENCHANT_CHANGED')
+		Armory:UnregisterEvent('ENCHANT_SPELL_COMPLETED')
 		Armory:UnregisterEvent('CRITERIA_UPDATE')
 		Armory:UnregisterEvent('PLAYER_EQUIPMENT_CHANGED')
 		Armory:UnregisterEvent('UPDATE_INVENTORY_DURABILITY')
@@ -514,6 +515,7 @@ function Armory:ToggleItemLevelInfo()
 		-- Armory:RegisterEvent('AZERITE_ESSENCE_UPDATE', 'UpdateCharacterInfo')
 		Armory:RegisterEvent('SOCKET_INFO_UPDATE', 'UpdateCharacterInfo')
 		Armory:RegisterEvent('WEAPON_ENCHANT_CHANGED', 'UpdateCharacterInfo')
+		Armory:RegisterEvent('ENCHANT_SPELL_COMPLETED', 'UpdateCharacterInfo')
 		Armory:RegisterEvent('CRITERIA_UPDATE', 'UpdateCharacterInfo')
 		Armory:RegisterEvent('PLAYER_EQUIPMENT_CHANGED', 'UpdateCharacterInfo')
 		Armory:RegisterEvent('UPDATE_INVENTORY_DURABILITY', 'UpdateCharacterInfo')
