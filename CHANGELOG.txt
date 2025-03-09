@@ -1,3 +1,3 @@
-v4.84 9/8/24
+v4.87 3/2/25
 
-• fix "Shadow" not applying to All Objectives upon reload/logging in...again
+• add old elvui range tags back

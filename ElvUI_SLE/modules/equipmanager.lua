@@ -165,7 +165,7 @@ EM.TagsTable = {
 			if C_PvP_IsPVPMap() then --Seems to be true only for instanced pvp
 				if pvpType then
 					local instType = (C_PvP_IsArena() or C_PvP_IsMatchConsideredArena()) and 'arena' or 'pvp'
-					
+
 					if instType == pvpType then
 						return true
 					else
@@ -382,7 +382,7 @@ local function DelayedEquip()
 			SLE:Print(format(L["SLE_EM_SET_NOT_EXIST"], trueSet), 'error')
 		end
 	end
-	
+
 	--Usualy it takes around a second to equip everything
 	E:Delay(1, function() EM.Processing = false end)
 end
@@ -403,9 +403,9 @@ local function Equip(event, ...)
 	if event == 'PLAYER_REGEN_ENABLED' then
 		EM:UnregisterEvent(event)
 	end
-	
+
 	--apparently new spel knows statuses are available a bit after the spec switch => a bit of a delay
-	E:Delay(1, DelayedEquip) 
+	E:Delay(1, DelayedEquip)
 end
 
 
@@ -455,14 +455,14 @@ function EM:Initialize()
 	EM.db = E.private.sle.equip
 	if not SLE.initialized or not EM.db.enable then return end
 	EM.lock = false
-	EM:RegisterEvent('PLAYER_ENTERING_WORLD', Equip)
-	EM:RegisterEvent('LOADING_SCREEN_DISABLED', Equip)
-	EM:RegisterEvent('ACTIVE_TALENT_GROUP_CHANGED', Equip)
-	EM:RegisterEvent('SPELLS_CHANGED', Equip)
-	-- EM:RegisterEvent('PLAYER_TALENT_UPDATE', Equip)
-	EM:RegisterEvent('PLAYER_LEVEL_CHANGED', Equip)
-	EM:RegisterEvent('GROUP_ROSTER_UPDATE', Equip)
-	EM:RegisterEvent('PLAYER_FLAGS_CHANGED', Equip)
+
+	EM:RegisterNewEvent('PLAYER_ENTERING_WORLD')
+	EM:RegisterNewEvent('LOADING_SCREEN_DISABLED')
+	EM:RegisterNewEvent('ACTIVE_TALENT_GROUP_CHANGED')
+	EM:RegisterNewEvent('SPELLS_CHANGED')
+	EM:RegisterNewEvent('PLAYER_LEVEL_CHANGED')
+	EM:RegisterNewEvent('GROUP_ROSTER_UPDATE')
+	EM:RegisterNewEvent('PLAYER_FLAGS_CHANGED')
 
 	--Initial apply options
 	EM:TagsProcess(EM.db.conditions)
